@@ -25,9 +25,20 @@ const quoteList = [
     quote:
       "Public business, my son, must always be done by somebody. It will be done by somebody or other. If wise men decline it, others will not; if honest men refuse it, others will not."
   },
-  { author: "", quote: "" },
-  { author: "", quote: "" },
-  { author: "", quote: "" }
+  {
+    author: "Abraham Lincoln",
+    quote: "You can tell the greatness of a man by what makes him angry."
+  },
+  {
+    author: "Samuel Taylor",
+    quote:
+      "Genius is the power of carrying the feelings of childhood into the powers of manhood."
+  },
+  {
+    author: "Ernest Hemingway",
+    quote:
+      "There is nothing noble in being superior to your fellow man; true nobility is being superior to your former self."
+  }
 ];
 
 class Quote extends React.Component {
@@ -35,14 +46,13 @@ class Quote extends React.Component {
     super(props);
     this.state = {
       author: quoteList[0].author,
-      quote: quoteList[0].quote,
+      quote: quoteList[0].quote
     };
     this.handleClick = this.newQuote.bind(this);
   }
 
   newQuote() {
-    let newquote =
-      quoteList[Math.floor(Math.random() * quoteList.length)];
+    let newquote = quoteList[Math.floor(Math.random() * quoteList.length)];
     this.setState({ quote: newquote.quote, author: newquote.author });
   }
 
@@ -59,6 +69,7 @@ class Quote extends React.Component {
           id="tweet-quote"
           className="button"
           target="_blank"
+          rel="noopener noreferrer"
           href={
             "https://twitter.com/intent/tweet?hashtags=quotes,FCC,&related=freecodecamp&text=" +
             encodeURIComponent(
