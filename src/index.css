@@ -14,8 +14,18 @@ code {
 }
 
 .quoteBox {
+  display: flex;
+  flex-direction: column;
   margin: auto;
-  max-width: 60em;
+  max-width: 40em;
   background-color: snow;
   padding: 20px;
+  border-radius: 10px;
+}
+
+.wrapper-class {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

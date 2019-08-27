@@ -46,13 +46,22 @@ class Quote extends React.Component {
     super(props);
     this.state = {
       author: quoteList[0].author,
-      quote: quoteList[0].quote
+      quote: quoteList[0].quote,
+      currentIndex: 0
     };
     this.handleClick = this.newQuote.bind(this);
   }
 
   newQuote() {
-    let newquote = quoteList[Math.floor(Math.random() * quoteList.length)];
+    let index = Math.floor(Math.random() * quoteList.length);
+    let newIndex =
+      index === this.state.currentIndex
+        ? index + 1 > quoteList.length
+          ? index - 1
+          : index + 1
+        : index;
+    let newquote = quoteList[newIndex];
+    this.setState({ currentIndex: newIndex });
     this.setState({ quote: newquote.quote, author: newquote.author });
   }
 
@@ -62,33 +71,38 @@ class Quote extends React.Component {
         <blockquote id="text">
           <span className="quotations">"</span>
           {this.state.quote}
-          <span className="quotations">"</span>
         </blockquote>
         <p id="author">-{this.state.author}</p>
-        <a
-          id="tweet-quote"
-          className="button"
-          target="_blank"
-          rel="noopener noreferrer"
-          href={
-            "https://twitter.com/intent/tweet?hashtags=quotes,FCC,&related=freecodecamp&text=" +
-            encodeURIComponent(
-              '"' + this.state.quote + '"\n-' + this.state.author
-            )
-          }
-        >
-          Tweet!
-        </a>
-        <a
-          className="button"
-          href="#"
-          id="new-quote"
-          onClick={() => {
-            this.newQuote();
-          }}
-        >
-          New Quote
-        </a>
+        <div className="buttonBox">
+          <div className="tweet-button-box">
+            <a
+              id="tweet-quote"
+              className="button"
+              target="_blank"
+              rel="noopener noreferrer"
+              href={
+                "https://twitter.com/intent/tweet?hashtags=quotes,FCC,&related=freecodecamp&text=" +
+                encodeURIComponent(
+                  '"' + this.state.quote + '"\n-' + this.state.author
+                )
+              }
+            >
+              Tweet!
+            </a>
+          </div>
+          <div className="newquote-button-box">
+          <a
+            className="button newquote-button"
+            href="#"
+            rel="noopener noreferrer"
+            id="new-quote"
+            onClick={() => {
+              this.newQuote();
+            }}
+          >
+            New Quote
+          </a></div>
+        </div>
       </React.Fragment>
     );
   }
