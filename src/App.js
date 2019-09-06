@@ -66,6 +66,7 @@ class Quote extends React.Component {
   }
 
   render() {
+    //@ts-ignore
     return (
       <React.Fragment>
         <blockquote id="text">
@@ -91,6 +92,7 @@ class Quote extends React.Component {
             </a>
           </div>
           <div className="newquote-button-box">
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid*/}
             <a
               className="button newquote-button"
               href="#"
