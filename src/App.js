@@ -91,17 +91,18 @@ class Quote extends React.Component {
             </a>
           </div>
           <div className="newquote-button-box">
-          <a
-            className="button newquote-button"
-            href="#"
-            rel="noopener noreferrer"
-            id="new-quote"
-            onClick={() => {
-              this.newQuote();
-            }}
-          >
-            New Quote
-          </a></div>
+            <a
+              className="button newquote-button"
+              href="#"
+              rel="noopener noreferrer"
+              id="new-quote"
+              onClick={() => {
+                this.newQuote();
+              }}
+            >
+              New Quote
+            </a>
+          </div>
         </div>
       </React.Fragment>
     );
